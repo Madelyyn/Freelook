@@ -1,7 +1,6 @@
 package com.github.chromaticforge.freelook.hook
 
 import cc.polyfrost.oneconfig.utils.dsl.mc
-import cc.polyfrost.oneconfig.utils.hypixel.HypixelUtils
 import com.github.chromaticforge.freelook.EaseInExpoTimer
 import com.github.chromaticforge.freelook.config.FreelookConfig
 import kotlin.math.pow
@@ -55,7 +54,7 @@ object FreelookHook {
         if (mc.inGameHasFocus) {
             if (!perspectiveToggled) return true
 
-            if (HypixelUtils.INSTANCE.isHypixel || FreelookConfig.freelook) {
+            if (FreelookConfig.freelook) {
                 cameraYaw = mc.thePlayer.rotationYaw
                 cameraPitch = mc.thePlayer.rotationPitch
                 return true

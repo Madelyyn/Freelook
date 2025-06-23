@@ -11,7 +11,6 @@ import cc.polyfrost.oneconfig.config.data.InfoType
 import cc.polyfrost.oneconfig.config.data.Mod
 import cc.polyfrost.oneconfig.config.data.ModType
 import cc.polyfrost.oneconfig.libs.universal.UKeyboard
-import cc.polyfrost.oneconfig.utils.hypixel.HypixelUtils
 import com.github.chromaticforge.freelook.Constants
 import com.github.chromaticforge.freelook.hook.FreelookHook
 
@@ -25,8 +24,6 @@ object FreelookConfig : Config(
 
     // None
 
-    @Info(text = "Freelook functionality is disabled on Hypixel!", type = InfoType.INFO, size = 2)
-    var hypixelWarning = false
 
     // None
 
@@ -70,10 +67,9 @@ object FreelookConfig : Config(
 
         registerKeyBind(keyBind) { if (!mode) FreelookHook.togglePerspective() }
 
-        hideIf("hypixelWarning") { !HypixelUtils.INSTANCE.isHypixel }
-        hideIf("invertPitch") { freelook || HypixelUtils.INSTANCE.isHypixel }
-        hideIf("lockPitch") { freelook || HypixelUtils.INSTANCE.isHypixel }
-        hideIf("invertYaw") { freelook || HypixelUtils.INSTANCE.isHypixel }
+        hideIf("invertPitch") { freelook  }
+        hideIf("lockPitch") { freelook  }
+        hideIf("invertYaw") { freelook }
 
         addDependency("invertPitch", "pitch")
         addDependency("lockPitch", "pitch")
